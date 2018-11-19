@@ -8,15 +8,11 @@ except:
 
 class Vehicle:
     
-
     def __init__(self):
-
         pass
 
     def create(self,  mpg,  VIN):
-
         self.mpg = mpg
-
         self.VIN = VIN
 
     def getVin(self):
@@ -37,14 +33,10 @@ class Vehicle:
         c=1
 
 class Truck(Vehicle):
-
-    
-
     def __init__(self):
         pass
 
     def create(self,  mpg,length, VIN,num_rooms):
-
         self.mpg = mpg
         self.num_rooms=num_rooms
         self.length=length
@@ -55,8 +47,6 @@ class Truck(Vehicle):
 
 
 class Van:
-    
-
     def __init__(self):
         pass
 
@@ -71,8 +61,6 @@ class Van:
         print(self, self.make_model, self.mpg, self.numberofpassenger,self.VIN)
 
 class VehicleCost:
-    
-
     def __init__(self):
         pass
 
@@ -121,8 +109,10 @@ class VehicleCost:
 class VehicleCosts(VehicleCost):
     def __init__(self):
         pass
+    
     def create(self,vehicle_type):
         pass
+    
     def getVehicleCosts(self,vehicle_type):
         
         cur = con.cursor()
@@ -155,33 +145,29 @@ class VehicleCosts(VehicleCost):
 class vehicles():
     def __init__(self):
         pass
+    
     def create(self):
         pass
+
     def getVehicle(self,vin):
-       
         cur = con.cursor()
         cur.execute('select type from vehicles where vin=:s', s=vin)
-
         a = cur.fetchone()
         return a[0]
     
 
     def addVehicle(self,vehicle):
-       
         cur = con.cursor()
         cur.execute('insert into vehicles values( )', (vin))
 
     def numAvailVechicles(self,typeo):
-    
         cur = con.cursor()
-        
         cur.execute("select count(*) from vehicles where type=:s minus select count(*) from reservation where type=:s ",s=typeo)
         a=cur.fetchone()
         return a[0]
-    def getAvailVehicles(self,typeo):
     
+    def getAvailVehicles(self,typeo):
         cur = con.cursor()
-        
         cur.execute("select vin from vehicles where type=:s minus (select vin from reservation where type=:s)",s=typeo)
         print("The following Vehicle identification nos are available for you")
         for vin in cur.fetchall ():
@@ -210,8 +196,8 @@ class Reservation():
 class Reservations():
     def __init__(self):
         pass
+ 
     def isReserved(self,vin):
-        
         cur=con.cursor()
         cur.execute('select count(*) from reservation where vin=:s',s=vin)
         a=cur.fetchone()
@@ -220,39 +206,33 @@ class Reservations():
             print("it is reserved")
         else:
             print("the vehcile is not reserved")
+    
     def  getVinForReserv(self,credit_card):
-        
         cur = con.cursor()
         cur.execute('select vin from reservation where credit_card=:s', s=credit_card)
-
         a = cur.fetchone()
         return a
+ 
     def addReservation(self,resv,vin,credit_card,address,cost):
-
-        
         cur = con.cursor()
         res=Reservations()
         b=res.getVinForReserv(credit_card)
         if b is not None:
+            print ("Reservation is there")
             
         #cur.execute("insert into vehicles select * from vehicle1 where vin=(select vin from reservation where credit_card=:c)",c=credit_card)
         #cur.execute('update vehicles set avail=:y where vin=(select vin from reservaton where credit_card=:s) ',s=credit_card,y="yes")
             
-            print ("Reservation is there")
+            
         else:
-          
             cur.execute('select type from vehicles where vin=:v',v=vin)
             a=cur.fetchone()
             ty=a[0]
             cur.execute('insert into reservation values(:S,:t,:u,:v,:w,:x)',s=resv,t=address,u=credit_card,v=vin,w=ty,x=cost)
             cur.execute('select type from vehicles where vin=:v',v=vin)
             print("Reservation is done!!")
-            
-       
-        
         con.commit()
     def findReservation(self,name,addr):
-        
         cur = con.cursor()
         cur.execute('select count(*) from reservation where name=:s and address=:t', s=name,t=addr)
         a = cur.fetchone()
@@ -264,7 +244,6 @@ class Reservations():
             print("reservation is not there")
 
     def cancelReservation(self,credit_card):
-        
         cur = con.cursor()
         res=Reservations()
         b=res.getVinForReserv(credit_card)
@@ -279,36 +258,33 @@ class Reservations():
         con.commit()
 
 
-
-
-
-
         #select * from reservation where vin=:vin
 i=0
+
 while(i<=8):
     print("Enter to vehicle Reservation System");
     print(" 1 Display Vehicle type \n 2 Check Rental rates \n 3 Check Available vehicles \n 4 Get a cost of specific rental \n 5 Make a reservation \n 6 Cancel a reservation \n 7 Quit")
     choice = input()
+    
     if int(choice)==1:
         vin=input("Enter vin")
         veho=vehicles()
         typeo=veho.getVehicle(vin)
         print("The vehicle type is ",typeo)
+    
     if  int(choice)==2:
-
         typeo=input("Enter vehicle type")
         vehco=VehicleCosts()
         cost=vehco.getVehicleCosts(typeo)
         print ("Daily rate",cost[1],"\n weekly_rate",cost[2],"\nweekend_rate",cost[3],"\nfree_miles",cost[4],"\nper_mile_chrg",cost[5],"\ninsur_rate",cost[6])
+    
     if int(choice)==3:
-
         veho=vehicles()
         typeo=input("Enter vehicle type")
         veho.getAvailVehicles(typeo)
+    
     if int(choice)==4:
-
         vehco=VehicleCosts()
-     
         typeo=input("Enter vehicle type")
         #veho.getAvailVehicles(typeo)
         print ("press 0-5","Daily rate ",0," weekly_rate ",1,"weekend_rate ",2,"free_miles ",3,"per_mile_chrg ",4,"insur_rate ",5)
@@ -316,7 +292,7 @@ while(i<=8):
         cost=vehco.getVehicleCosts(typeo)
         inte=int(inp)
         print("The specific cost of vehicle is ",cost[inte+1])
-
+    
     if int(choice)==5:
         res=Reservations()
         vehco=VehicleCosts()
@@ -327,7 +303,6 @@ while(i<=8):
         insur=input("Insurance required 0 or 1")
         rent=input("Rental period")
         miles=input("miles driving")
-        
         cur=con.cursor()
         a=cur.execute('select type from vehicles where vin=:v',v=vin)
         b=a.fetchone()
