@@ -1,0 +1,198 @@
+Vehicle Rental Agency Program
+==============================
+
+
+1. The Problem:
+The problem is to develop an object-oriented design and imple-
+mentation of a program capable of maintaining reservations for a
+vehicle rental agency. The agency rents out three types of vehicles—
+cars, vans, and moving trucks. The program should allow users to
+check for available vehicles, request rental charges by vehicle type,
+get the cost of renting a particular type vehicle for a specified period of time, 
+and make/cancel reservations.
+
+2. Problem Analysis
+The program needs an appropriate set of objects for the vehicle rental agency domain. An obvi-
+ous class to include is a Vehicle class. It can be implemented to maintain information common
+to all vehicle types. Subclasses of the Vehicle class can maintain information specific to each
+subtype.
+
+For example, all vehicles have a miles-per-gallon rating and a vehicle identification number
+(VIN). Thus, this information can be maintained in the Vehicle class. However, there are different
+make and model cars (with either two or four doors, that hold a specific number of passengers); dif-
+ferent make and model vans (able to hold a specific number of passengers); and moving trucks of
+various lengths, each providing a certain amount of cargo space. Therefore, the Vehicle class is
+made a superclass of classes Car, Van, and Truck, in which each subclass contains information
+(instance variables and/or methods) specific to that vehicle type.
+
+For each type vehicle, there is a rental charge based on daily, weekly, and weekend rental
+rates. There is also a mileage charge and some number of free miles (on select vehicles), plus the
+cost of optional insurance. Because these costs are associated with particular types, but cost is not
+inherently part of a vehicle’s attribute, we include a separate VehicleCost class.
+
+Finally, we incorporate a Reservation class that maintains the information for each reserva-
+tion made. This will include the customer name, address, credit card number, and the VIN of the
+vehicle rented.
+
+3. Program Design
+Meeting the Program Requirements
+
+The general requirements for this program are for users to be able to check for the availability of
+vehicles of a certain type (cars, vans, or trucks); request rental charges by vehicle type; determine
+the rental cost for a particular vehicle and rental period; and make and cancel reservations
+
+Cars : make/model, miles-per-gallon , num of passengers , num of doors, VIN
+
+Vans : make/model, miles-per-gallon , num of passengers , VIN
+
+Trucks : miles-per-gallon , length , num of rooms , VIN
+
+
+Rental Costs by Vehicle type:
+
+
+	    Daily Rate	Weekly Rate Weekend Rate	Free miles/day	Per mile charge
+Car 
+
+Van 
+
+Truck
+
+Data Description
+All the data is stored as string types, converted to a numeric type when needed in a computation
+(such as the cost of daily insurance).
+
+Algorithmic Approach
+The algorithmic methods of the program will consist of simple search (for finding and retrieving
+the requested vehicle information by the user), updating of information (for marking vehicles as
+reserved or unreserved), and direct calculation (for calculating the total cost of a rental).
+
+
+Overall Program Steps
+
+Three classes store the information in the system—Vehicle (and its subclasses), Vehicle-
+Cost, and Reservation. For each of these classes there is a corresponding aggregator class—
+Vehicles, VehicleCosts, and Reservations—that maintains a collection of the corresponding
+object type. Each aggregator class has methods for maintaining its collection of objects (for
+example, addVehicle in the Vehicles class and addVehicleCost in the VehicleCosts class).
+
+
+Overall Design of the Vehicle Rental Agency Program
+
+program initialization
+display menu options
+get menu selection from user
+execute selection and display results
+terminate when requested by user
+
+
+
+Console :
+
+<<< MAIN MENU >>>
+
+
+1. Display Vehicle type
+2. Check Rental rates
+3. Check Available vehicles
+4. Get a cost of specific rental
+5. Make a reservation
+6. Cancel a reservation
+7. Quit.
+
+
+Class Diagram for Vehicle Rental Agency Program:
+
+Car:
+
+create(make_model, mpg , number of passengers , number of doors , VIN )
+getDescription()
+
+
+
+Van:
+
+create(make_model, mpg , number of passengers , VIN )
+getDescription()
+
+Truck:
+
+create(mpg , length , num_rooms , VIN )
+getDescription()
+
+Vehicle:
+
+Create(mpg,vin )
+getType()
+getVin
+getDescription
+isReserved()
+setReserved(reserved)
+
+
+
+
+Vehicles:
+
+create()
+getVehicle(vin)
+addVehicle(vehicle)
+numAvailVehicles(vehicletype)
+getAvailVehicles(vehicletype)
+unreserveVehicle(vin)
+
+
+Reservation:
+
+create(name, address, credit_card, vin )
+getName()
+getAddr()
+getCreditCard()
+getVin()
+
+
+Reservations:
+
+
+create(vehicles)
+isReserved(vin)
+getVinForReserv(credit_card)
+addReservation(resv)
+findReservation(name,addr)
+cancelReservation(credit_card)
+
+
+VehicleCost:
+
+create(daily_rate, weekly_rate , weekend_rate, free_miles , per_mile_chrg, insur_rate)
+getDailyRate()
+getWeeklyRate()
+getWeekendRate()
+getFreeDailyMiles()
+getPerMileCharge()
+getInsuranceRate()
+getCosts()
+
+VehicleCosts:
+
+create(vehicle_types)
+getVehicleCost(vehicle_type)
+addVehicleCost(veh_type,veh_cost)
+calcRentalCost(vehicle_type, rental_period, want_insurance , miles_driving )
+
+
+
+System Interface:
+
+
+create()
+numAvialVehicles(vehicle_type)
+getVehicle(vin)
+getVehicleTypes()
+getVehicleCosts(vehicle_type)
+getAvialVehicles(vehicle_type)
+isReserved(vin)
+findReservation(credit_card)
+addReservation(vin)
+cancelReservation(credit_card)
+calcRentalCost(vehicle_type, rental_period , want_insurance , miles_driving )

@@ -1,0 +1,111 @@
+Enter to vehicle Reservation System
+ 1 Display Vehicle type 
+ 2 Check Rental rates 
+ 3 Check Available vehicles 
+ 4 Get a cost of specific rental 
+ 5 Make a reservation 
+ 6 Cancel a reservation 
+ 7 Quit
+
+ 1
+
+Enter vin1G6SM17X7A1337611
+The vehicle type is  truck
+Enter to vehicle Reservation System
+ 1 Display Vehicle type 
+ 2 Check Rental rates 
+ 3 Check Available vehicles 
+ 4 Get a cost of specific rental 
+ 5 Make a reservation 
+ 6 Cancel a reservation 
+ 7 Quit
+
+ 2
+
+Enter vehicle typevan
+Daily rate 01 
+ weekly_rate 59 
+weekend_rate 83 
+free_miles 9 
+per_mile_chrg 17 
+insur_rate 94
+Enter to vehicle Reservation System
+ 1 Display Vehicle type 
+ 2 Check Rental rates 
+ 3 Check Available vehicles 
+ 4 Get a cost of specific rental 
+ 5 Make a reservation 
+ 6 Cancel a reservation 
+ 7 Quit
+
+ 3
+
+ Enter vehicle typevan
+The following Vehicle identification nos are available for you
+('1G4ZE87E995596715',)
+('1LJFP53Z6C4756634',)
+('2FDBF12P9C6756633',)
+('5N1AL3APXDW150267',)
+('NLHCF35M0FA928880',)
+Enter to vehicle Reservation System
+ 1 Display Vehicle type 
+ 2 Check Rental rates 
+ 3 Check Available vehicles 
+ 4 Get a cost of specific rental 
+ 5 Make a reservation 
+ 6 Cancel a reservation 
+ 7 Quit
+
+ 4
+
+ Enter vehicle typetruck
+press 0-5 Daily rate  0  weekly_rate  1 weekend_rate  2 free_miles  3 per_mile_chrg  4 insur_rate  5
+enter 0-51
+The specific cost of vehicle is  47
+Enter to vehicle Reservation System
+ 1 Display Vehicle type 
+ 2 Check Rental rates 
+ 3 Check Available vehicles 
+ 4 Get a cost of specific rental 
+ 5 Make a reservation 
+ 6 Cancel a reservation 
+ 7 Quit
+
+ 5
+
+nameanim123
+Enter your credit_cardanisn1
+Enter VIN1G6SM17X7A1337611
+Enter your addressdelhi
+Insurance required 0 or 11
+Rental period4
+miles driving3
+The total cost is  367
+Reservation is done!!
+Enter to vehicle Reservation System
+ 1 Display Vehicle type 
+ 2 Check Rental rates 
+ 3 Check Available vehicles 
+ 4 Get a cost of specific rental 
+ 5 Make a reservation 
+ 6 Cancel a reservation 
+ 7 Quit
+
+ 6
+
+Enter your Credit_card detailsanisn1
+Reservation has been cancelled
+Enter to vehicle Reservation System
+ 1 Display Vehicle type 
+ 2 Check Rental rates 
+ 3 Check Available vehicles 
+ 4 Get a cost of specific rental 
+ 5 Make a reservation 
+ 6 Cancel a reservation 
+ 7 Quit
+
+ 7
+
+An exception has occurred, use %tb to see the full traceback.
+
+SystemExit
