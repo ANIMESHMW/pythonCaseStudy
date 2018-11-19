@@ -1,7 +1,11 @@
 import cx_Oracle
 
 import sys
-con = cx_Oracle.connect('SYSTEM/root1234A@localhost:1521/orcl')
+try:
+    con = cx_Oracle.connect('SYSTEM/root1234A@localhost:1521/orcl')
+except:
+    print("Connection cannot be established")
+
 class Vehicle:
     
 
@@ -229,15 +233,14 @@ class Reservations():
         cur = con.cursor()
         res=Reservations()
         b=res.getVinForReserv(credit_card)
-        if b is None:
+        if b is not None:
             
         #cur.execute("insert into vehicles select * from vehicle1 where vin=(select vin from reservation where credit_card=:c)",c=credit_card)
         #cur.execute('update vehicles set avail=:y where vin=(select vin from reservaton where credit_card=:s) ',s=credit_card,y="yes")
             
             print ("Reservation is there")
         else:
-            
-            
+          
             cur.execute('select type from vehicles where vin=:v',v=vin)
             a=cur.fetchone()
             ty=a[0]
@@ -341,7 +344,6 @@ while(i<=8):
     if int(choice)==7:
         con.commit()
         con.close()
-       
         sys.exit()
     i=i+1
     
