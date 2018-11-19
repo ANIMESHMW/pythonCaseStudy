@@ -3,7 +3,7 @@ import cx_Oracle
 import sys
 con = cx_Oracle.connect('SYSTEM/root1234A@localhost:1521/orcl')
 class Vehicle:
-    'Common base class for all employees'
+    
 
     def __init__(self):
 
@@ -32,17 +32,9 @@ class Vehicle:
     def setReserved(self,reserved):
         c=1
 
-
-
-
-
-
-
-
-
 class Truck(Vehicle):
 
-    'Common base class for all employees'
+    
 
     def __init__(self):
         pass
@@ -58,13 +50,8 @@ class Truck(Vehicle):
         print(self,  self.mpg, self.VIN)
 
 
-
-
-
-
-
 class Van:
-    'Common base class for all employees'
+    
 
     def __init__(self):
         pass
@@ -80,7 +67,7 @@ class Van:
         print(self, self.make_model, self.mpg, self.numberofpassenger,self.VIN)
 
 class VehicleCost:
-    'Common base class for all employees'
+    
 
     def __init__(self):
         pass
@@ -195,12 +182,7 @@ class vehicles():
         print("The following Vehicle identification nos are available for you")
         for vin in cur.fetchall ():
             print(vin)
-            
-          
-        
-        
-
-
+   
 class Reservation():
     def __init__(self):
         pass
@@ -263,11 +245,7 @@ class Reservations():
             cur.execute('select type from vehicles where vin=:v',v=vin)
             print("Reservation is done!!")
             
-        
        
-        
-        
-        
         
         con.commit()
     def findReservation(self,name,addr):
@@ -353,18 +331,12 @@ while(i<=8):
         cost=vehco.getVehicleCosts(b[0])
         tot=vehco.calcRentalCost(b[0], int(rent), int(insur) , int(miles))
         print ("The total cost is ",tot)
-        
-        
-        
         res.addReservation(name,vin,credit_card,Address,tot)
+    
     if int(choice)==6:
         res=Reservations()
         cred=input("Enter your Credit_card details")
         res.cancelReservation(cred)
-        
-
-
-    
     
     if int(choice)==7:
         con.commit()
